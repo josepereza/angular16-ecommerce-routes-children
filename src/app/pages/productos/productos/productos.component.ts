@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from 'src/app/services/products.service';
+import { ListadoProductsComponent } from 'src/app/components/listado-products/listado-products.component';
 
 @Component({
   selector: 'app-productos',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ListadoProductsComponent],
   templateUrl: './productos.component.html',
   styleUrls: ['./productos.component.css']
 })
