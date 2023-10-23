@@ -39,8 +39,8 @@ export interface Product {
 export class ListadoProductsComponent implements AfterViewInit {
   products:any[]=[]
 
-  displayedColumns: string[] = ['id', 'title', 'price', 'category.name', 'description'];
-  dataSource!: MatTableDataSource<UserData>;
+  displayedColumns: string[] = ['id', 'title', 'price', 'category', 'description'];
+  dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -57,8 +57,10 @@ export class ListadoProductsComponent implements AfterViewInit {
   ngAfterViewInit() {
     this.productos.getProducts().subscribe((data:any)=>{
       this.products=data
+      const productos2=this.products.map(dato=>{return {id:dato.id,title:dato.title,price:dato.price,category:dato.category.name,description:dato.description}})
+      console.log('produtgos2', productos2)
       console.log('productos component', this.products)
-      this.dataSource = new MatTableDataSource(this.products);
+      this.dataSource = new MatTableDataSource(productos2);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
 
