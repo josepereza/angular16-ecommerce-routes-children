@@ -1,12 +1,21 @@
 import { Routes } from '@angular/router';
-import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { NavegacionComponent } from './modules/admin/components/navegacion/navegacion.component';
 
 export const routes: Routes = [
+    {
+        path: '',
+        redirectTo: '/auth/login',
+        pathMatch: 'full'
+      },
 
     {
-      path:'',
+      path:'admin',
       loadChildren: () =>
-      import('../app/components/navegacion.routes')
+      import('./modules/admin/navegacion.routes')
           .then(m => m.routesNavegacion)
-    }
+    },
+    {
+        path: 'auth',
+        loadChildren: () => import('./modules/auth/auth.routes').then(m => m.routes),
+      }
 ];

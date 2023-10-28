@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, NgFor } from '@angular/common';
-import { NavegacionComponent } from 'src/app/components/navegacion/navegacion.component';
+import { NavegacionComponent } from 'src/app/modules/admin/components/navegacion/navegacion.component';
 
 @Component({
   selector: 'app-dashboard',

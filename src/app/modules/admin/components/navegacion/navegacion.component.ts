@@ -8,7 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
-import { DashboardComponent } from 'src/app/pages/dashboard/pages/dashboard/dashboard.component';
+import { DashboardComponent } from 'src/app/modules/admin/pages/dashboard/pages/dashboard/dashboard.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({

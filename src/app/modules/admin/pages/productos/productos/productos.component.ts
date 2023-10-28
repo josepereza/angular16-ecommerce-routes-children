@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductsService } from 'src/app/services/products.service';
-import { ListadoProductsComponent } from 'src/app/components/listado-products/listado-products.component';
+import { ListadoProductsComponent } from 'src/app/modules/admin/components/listado-products/listado-products.component';
 export interface Category {
   id: number;
   name: string;

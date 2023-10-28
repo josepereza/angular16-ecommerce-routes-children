@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { NavegacionComponent } from './components/navegacion/navegacion.component';
+import { NavegacionComponent } from './modules/admin/components/navegacion/navegacion.component';
 
 @Component({
   selector: 'app-root',
