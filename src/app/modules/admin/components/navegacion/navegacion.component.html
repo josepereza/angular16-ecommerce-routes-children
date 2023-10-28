@@ -4,6 +4,7 @@
       [mode]="'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
+    <span>{{auth.userEmail()}}</span>
     <mat-nav-list>
       <a mat-list-item  [routerLink]='["/admin/productos"]'>Productos</a>
       <a mat-list-item [routerLink]='["/admin/usuarios"]'>Usuarios</a>

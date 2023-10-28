@@ -57,7 +57,7 @@ export class LoginComponent {
 
    
         if (data.some(valor=>valor.password===password && valor.email===email)){
-            
+            this.auth.userEmail.set(email)
           this.router.navigate(['/admin']);
         }else {
           this.form.markAllAsTouched();

@@ -10,6 +10,7 @@ import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { DashboardComponent } from 'src/app/modules/admin/pages/dashboard/pages/dashboard/dashboard.component';
 import { RouterLink, RouterOutlet } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-navegacion',
@@ -34,6 +35,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   ]
 })
 export class NavegacionComponent {
+  auth = inject(AuthService);
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
