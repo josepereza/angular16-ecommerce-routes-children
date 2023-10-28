@@ -22,6 +22,8 @@ export class AuthService {
         ) {
           this.userEmail.set(email);
           console.log('authservice', this.userEmail());
+        }else {
+          this.userEmail.set('')
         }
       })
     );

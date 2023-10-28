@@ -29,8 +29,8 @@ export class LoginComponent {
   showSpinner = false;
 
   form = this.fb.nonNullable.group({
-    email: ['admin@mail.com', [Validators.required, Validators.email]],
-    password: ['admin123', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   onSubmit(): void {
