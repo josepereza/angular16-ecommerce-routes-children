@@ -37,40 +37,20 @@ export class LoginComponent {
      if (this.form.valid) {
       this.showSpinner = true;
       const { email, password } = this.form.getRawValue();
-      /* this.auth.login(email, password)
-        .subscribe({
-          next: () => {
+     
+this.auth.login(email,password).subscribe(data=>{
+if(this.auth.userEmail().length > 1){
+  this.router.navigate(['/admin']);
+}else {
 
-            
-            this.router.navigate(['/admin']);
-          },
-          error: () => {
-            this.showSpinner = false;
-            this.openSnackBar('Invalid credentials', 'Close');
-          }
-        });
-    } else {
-      this.form.markAllAsTouched();
-    }  */
+  this.form.markAllAsTouched();
+      this.openSnackBar('Invalid credentials', 'Close');
+      this.showSpinner = false;
+}
+})
 
-    this.auth.login(email,password).subscribe(data=>{
-
+     }}
    
-        if (data.some(valor=>valor.password===password && valor.email===email)){
-            this.auth.userEmail.set(email)
-          this.router.navigate(['/admin']);
-        }else {
-          this.form.markAllAsTouched();
-          this.openSnackBar('Invalid credentials', 'Close');
-          this.showSpinner = false;
-        }
-
-
-
-      
-    })
-  }
-  }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, { duration: 5000 });
   }
