@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { AsyncPipe, CommonModule, NgIf } from '@angular/common';
 import { DashboardComponent } from 'src/app/modules/admin/pages/dashboard/pages/dashboard/dashboard.component';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import {MatChipsModule} from '@angular/material/chips';
 
 @Component({
   selector: 'app-navegacion',
@@ -29,13 +30,15 @@ import { AuthService } from 'src/app/services/auth.service';
     DashboardComponent,
     RouterOutlet,
     CommonModule,
-    RouterLink
+    RouterLink,
+    MatChipsModule
     
 
   ]
 })
 export class NavegacionComponent {
   auth = inject(AuthService);
+  router=inject(Router)
   private breakpointObserver = inject(BreakpointObserver);
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
@@ -43,4 +46,10 @@ export class NavegacionComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+    logout(){
+      this.auth.userEmail.set('')
+      this.router.navigate(['/auth/login'])
+
+    }
 }

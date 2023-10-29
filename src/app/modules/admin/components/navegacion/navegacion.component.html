@@ -4,7 +4,11 @@
       [mode]="'side'"
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <span>{{auth.userEmail()}}</span>
+    <mat-chip (click)="logout()"  [style.height]="'80px'" >
+      <img matChipAvatar src="{{auth.userAvatar}}"  alt="Photo of a Shiba Inu"/>
+      {{auth.userEmail()}}
+
+    </mat-chip>
     <mat-nav-list>
       <a mat-list-item  [routerLink]='["/admin/productos"]'>Productos</a>
       <a mat-list-item [routerLink]='["/admin/usuarios"]'>Usuarios</a>

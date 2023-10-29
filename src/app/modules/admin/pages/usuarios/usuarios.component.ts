@@ -34,7 +34,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class UsuariosComponent implements AfterViewInit  {
 userService=inject(UsersService)
-displayedColumns: string[] = ['id', 'email', 'name', 'role'];
+displayedColumns: string[] = ['id', 'email', 'name', 'avatar', 'role'];
 usuarios:any[]=[]
 
 dataSource!: MatTableDataSource<any>;

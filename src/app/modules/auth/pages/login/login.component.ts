@@ -39,7 +39,11 @@ export class LoginComponent {
       const { email, password } = this.form.getRawValue();
      
 this.auth.login(email,password).subscribe(data=>{
+ 
 if(this.auth.userEmail().length > 1){
+  const usuario=data.filter(data=>data.email===email)
+this.auth.userAvatar=usuario[0].avatar
+console.log('usuarioavatar', usuario[0].avatar)
   this.router.navigate(['/admin']);
 }else {
 

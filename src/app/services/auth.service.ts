@@ -9,6 +9,7 @@ export class AuthService {
   userService = inject(UsersService);
   users: any[] = [];
   userEmail = signal<string>('');
+  userAvatar=signal<string>('')
 
   constructor() {}
 
