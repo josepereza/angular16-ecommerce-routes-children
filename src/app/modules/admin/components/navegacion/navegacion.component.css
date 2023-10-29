@@ -16,7 +16,17 @@
   z-index: 1;
 }
 
-mat-chip{
+.container{
+  width: 90%;
+  padding: 40px;
+  border-radius: 20%;
+
   cursor:pointer !important;
+  display: flex;
+  align-items: center;
+  margin: auto;  
  
+}
+.imagen-chip{
+  border-radius:50%; width:30%; height: auto;
 }

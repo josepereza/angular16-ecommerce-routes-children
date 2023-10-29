@@ -31,7 +31,8 @@ import {MatChipsModule} from '@angular/material/chips';
     RouterOutlet,
     CommonModule,
     RouterLink,
-    MatChipsModule
+    MatChipsModule,
+    MatButtonModule
     
 
   ]
