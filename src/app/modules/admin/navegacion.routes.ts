@@ -11,6 +11,8 @@ export const routesNavegacion: Routes = [
       path:'', component:NavegacionComponent,
       children:[
         {path:'', component:DashboardComponent},
+        {path:'dashboard', component:DashboardComponent},
+
         {path:'productos', component:ProductosComponent},
         {path:'usuarios', component:UsuariosComponent}
       ]
