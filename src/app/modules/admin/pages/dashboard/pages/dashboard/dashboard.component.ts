@@ -27,11 +27,12 @@ import { NavegacionComponent } from 'src/app/modules/admin/components/navegacion
 })
 export class DashboardComponent {
   private breakpointObserver = inject(BreakpointObserver);
-
+columnas:number=2
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {
       if (matches) {
+        this.columnas=1
         return [
           { title: 'Card 1', cols: 1, rows: 1 },
           { title: 'Card 2', cols: 1, rows: 1 },
@@ -39,7 +40,7 @@ export class DashboardComponent {
           { title: 'Card 4', cols: 1, rows: 1 },
         ];
       }
-
+      this.columnas=2;
       return [
         { title: 'Card 1', cols: 2, rows: 1 },
         { title: 'Card 2', cols: 1, rows: 1 },
