@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { NavegacionComponent } from 'src/app/modules/admin/components/navegacion/navegacion.component';
+import { ChartProductsComponent } from 'src/app/modules/admin/components/chart-products/chart-products.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -22,7 +23,8 @@ import { NavegacionComponent } from 'src/app/modules/admin/components/navegacion
     MatCardModule,
     AsyncPipe,
     NgFor,
-    NavegacionComponent
+    NavegacionComponent,
+    ChartProductsComponent
   ],
 })
 export class DashboardComponent {
