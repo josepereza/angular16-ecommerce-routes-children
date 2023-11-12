@@ -15,7 +15,39 @@ export class ChartProductsComponent implements OnInit {
   productos: any[] = [];
   productos2: any[] = [];
   productos3: any[] = [];
-  
+  chart2!: Chart;
+  constructor() {
+    this.productosService.getProducts().subscribe((data: any) => {
+      this.productos = data;
+      this.productos2 = this.productos.map((dato) => {
+        return { name: dato.title, data: [dato.price] };
+      });
+      this.productos3.push(
+        this.productos2[0],
+        this.productos2[1],
+        this.productos2[2]
+      );
+      console.log('mis productos3', this.productos3);
+      this.chart2 = new Chart({
+        chart: {
+          type: 'bar',
+        },
+        title: {
+          text: 'Fruit Consumption',
+        },
+        xAxis: {
+          categories: ['Precios'],
+        },
+        yAxis: {
+          title: {
+            text: 'Fruit eaten',
+          },
+        },
+        series: this.productos3,
+      });
+    });
+  }
+
   /* Highcharts support a range of different chart types so data can be displayed in a meaningful way. 
   Highcharts supports a long list of different chart types, among others line, spline, area, areaspline,
    column, bar, pie, scatter, gauge, arearange, areasplinerange and columnrange.
@@ -23,7 +55,7 @@ export class ChartProductsComponent implements OnInit {
    Ej: type:'column'
  */
 
-  chart2= new Chart({
+  /*  chart2= new Chart({
     chart: {
       type: 'bar'
   },
@@ -46,41 +78,34 @@ export class ChartProductsComponent implements OnInit {
       data: [5, 7, 3]
   }as any]
 
-  })
+  }) */
+
   chart = new Chart({
     chart: {
-      type: 'line'
+      type: 'line',
     },
     title: {
-      text: 'Linechart'
+      text: 'Linechart',
     },
     credits: {
-      enabled: false
+      enabled: false,
     },
     series: [
       {
         name: 'Line 1',
-        data: [1, 2, 3]
-      }
-    ]
-  }as any);
+        data: [1, 2, 3],
+      },
+    ],
+  } as any);
 
   add() {
     this.chart.addPoint(Math.floor(Math.random() * 10));
   }
- 
+
   productosService = inject(ProductsService);
 
   ngOnInit(): void {
-    this.productosService.getProducts().subscribe((data: any) => {
-      this.productos = data;
-      this.productos2 = this.productos.map((dato) => {
-        return { name: dato.title, data: dato.price };
-      });
-
-      this.productos3.push(this.productos2[0],this.productos2[1],this.productos2[2])
-    console.log('mis productos3',this.productos3)
-    });
     
+  
   }
 }
