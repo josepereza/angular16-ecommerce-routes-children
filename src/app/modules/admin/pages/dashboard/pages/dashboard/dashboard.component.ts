@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { Breakpoints, BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { map } from 'rxjs/operators';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
@@ -9,6 +9,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AsyncPipe, NgFor } from '@angular/common';
 import { NavegacionComponent } from 'src/app/modules/admin/components/navegacion/navegacion.component';
 import { ChartProductsComponent } from 'src/app/modules/admin/components/chart-products/chart-products.component';
+import { ChartBarrasComponent } from 'src/app/modules/admin/components/chart-barras/chart-barras.component';
+import { ChartLineasComponent } from 'src/app/modules/admin/components/chart-lineas/chart-lineas.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -24,31 +26,30 @@ import { ChartProductsComponent } from 'src/app/modules/admin/components/chart-p
     AsyncPipe,
     NgFor,
     NavegacionComponent,
-    ChartProductsComponent
+    ChartProductsComponent,
+    ChartBarrasComponent,
+    ChartLineasComponent
   ],
 })
 export class DashboardComponent {
   private breakpointObserver = inject(BreakpointObserver);
 columnas:number=2
   /** Based on the screen size, switch from standard to one column per row */
-  cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
-    map(({ matches }) => {
-      if (matches) {
-        this.columnas=1
-        return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 },
-        ];
-      }
-      this.columnas=2;
-      return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 },
-      ];
-    })
-  );
+
+  constructor(){
+    this.breakpointObserver.observe([
+      Breakpoints.XSmall,
+      Breakpoints.Small,
+      Breakpoints.Medium,
+      Breakpoints.Large,
+      Breakpoints.XLarge
+    ]).subscribe((state: BreakpointState) => {
+      if (state.breakpoints[Breakpoints.Small]) {
+        console.log('Matches XSmall viewport');
+        this.columnas = 1;
+       
+
+      }else {this.columnas=2}
+  })
+}
 }

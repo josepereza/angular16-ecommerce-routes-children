@@ -1,4 +1,5 @@
 import { Component, OnInit, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -7,7 +8,7 @@ import { Chart } from 'angular-highcharts';
 @Component({
   selector: 'app-chart-products',
   standalone: true,
-  imports: [ChartModule],
+  imports: [ChartModule,CommonModule],
   templateUrl: './chart-products.component.html',
   styleUrls: ['./chart-products.component.css'],
 })
@@ -55,52 +56,9 @@ export class ChartProductsComponent implements OnInit {
    Ej: type:'column'
  */
 
-  /*  chart2= new Chart({
-    chart: {
-      type: 'bar'
-  },
-  title: {
-      text: 'Fruit Consumption'
-  },
-  xAxis: {
-      categories: ['Apples', 'Bananas', 'Oranges']
-  },
-  yAxis: {
-      title: {
-          text: 'Fruit eaten'
-      }
-  },
-  series: [{
-      name: 'Jane',
-      data: [1, 0, 4]
-  }, {
-      name: 'John',
-      data: [5, 7, 3]
-  }as any]
+  
 
-  }) */
-
-  chart = new Chart({
-    chart: {
-      type: 'line',
-    },
-    title: {
-      text: 'Linechart',
-    },
-    credits: {
-      enabled: false,
-    },
-    series: [
-      {
-        name: 'Line 1',
-        data: [1, 2, 3],
-      },
-    ],
-  } as any);
-
-  add() {
-    this.chart.addPoint(Math.floor(Math.random() * 10));
-  }
+ 
 
   productosService = inject(ProductsService);
 
