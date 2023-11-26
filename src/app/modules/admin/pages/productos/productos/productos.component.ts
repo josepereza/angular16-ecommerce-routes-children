@@ -25,8 +25,6 @@ export interface Product {
 export class ProductosComponent implements OnInit{
   products:any[]=[]
  ngOnInit(): void {
-  
-   
  }
  
 
