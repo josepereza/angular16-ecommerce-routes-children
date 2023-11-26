@@ -44,7 +44,7 @@ columnas:number=2
       Breakpoints.Large,
       Breakpoints.XLarge
     ]).subscribe((state: BreakpointState) => {
-      if (state.breakpoints[Breakpoints.Small]) {
+      if (state.breakpoints[Breakpoints.Small,Breakpoints.XSmall]) {
         console.log('Matches XSmall viewport');
         this.columnas = 1;
        
